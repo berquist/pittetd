@@ -8,7 +8,8 @@ pitetd10.clo
 pitetd11.clo
 pitetd12.clo
 pittdiss.pit
-pittetd.cls
+# This makes it more obvious what changes have been made to the class file.
+# pittetd.cls
 pitthesis.pit
 
 # LaTeX
