@@ -1,4 +1,15 @@
+# General
+
 *.html
+
+# *.ins products
+achicago.pit
+pitetd10.clo
+pitetd11.clo
+pitetd12.clo
+pittdiss.pit
+pittetd.cls
+pitthesis.pit
 
 # LaTeX
 
