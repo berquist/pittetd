@@ -302,7 +302,7 @@
         \usepackage[bookmarks,hyperindex=false]{hyperref}%
         \def\@pdfcreator{LaTeX, pittetd class, hyperref package}}
     \AtBeginDocument{%
-        \hypersetup{letterpaper,bookmarksnumbered,%
+        \hypersetup{bookmarksnumbered,%
             colorlinks,bookmarksopen,%
             linkcolor=blue,citecolor=blue,urlcolor=blue,%
             pdftitle=\@pdftitle,pdfauthor=\@author,%
