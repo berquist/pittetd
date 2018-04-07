@@ -3,6 +3,23 @@
 \let\setyear\year
 \let\year\oldyear
 %
+\usepackage[%
+    backend    = biber,%
+    style      = chem-acs,%
+    autocite   = superscript,%
+    backref    = true,%
+    biblabel   = brackets,%
+    doi        = true,%
+    minnames   = 1,%
+    maxnames   = 999,%
+]{biblatex}
+\DefineBibliographyStrings{english}{%
+  backrefpage = {page},% originally "cit. on p."
+  backrefpages = {pages},%
+}
+\addbibresource{./example.bib}
+%
+\usepackage{booktabs}
 \usepackage{graphicx}
 %
 \input{./preamble}
@@ -12,10 +29,14 @@
 \copyrightpage
 \input{./abstract}
 \tableofcontents
+\listoftables
 \listoffigures
 %
 \preface
 \input{./preface}
 %
 \input{./fakechap}
+%
+\printbibliography[title=BIBLIOGRAPHY]
+%
 \end{document}
