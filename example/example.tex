@@ -19,8 +19,14 @@
 }
 \addbibresource{./example.bib}
 %
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \usepackage{booktabs}
+\usepackage{etoolbox}
 \usepackage{graphicx}
+%
+\BeforeBeginEnvironment{algorithmic}{\begin{singlespace}}
+\AfterEndEnvironment{algorithmic}{\end{singlespace}}
 %
 \input{./preamble}
 \begin{document}
