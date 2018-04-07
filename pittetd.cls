@@ -608,6 +608,7 @@
     \clearpage\@prefacemessage
     \@afterindentfalse
     \typeout{Preface}%
+    \phantomsection
     \addcontentsline{toc}{chapter}{\bfseries PREFACE}
      \null\vskip 1in
     {\normalfont\bfseries\centering
