@@ -1,0 +1,26 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{example}
+
+\RequirePackage{booktabs}
+\RequirePackage{braket}
+\RequirePackage{etoolbox}
+\RequirePackage{graphicx}
+
+\RequirePackage{algorithm}
+\RequirePackage{algpseudocode}
+
+\BeforeBeginEnvironment{algorithmic}{\begin{singlespace}}
+\AfterEndEnvironment{algorithmic}{\end{singlespace}}
+
+\RequirePackage[usenames,dvipsnames,svgnames,hyperref,table]{xcolor}
+
+\definecolor{carmine}{HTML}{960018}
+
+\hypersetup{%
+  colorlinks=true,%
+  citecolor=black,%
+  linkcolor=black,%
+  urlcolor=carmine,%
+}
+
+\endinput
