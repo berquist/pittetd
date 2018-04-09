@@ -3,7 +3,7 @@
 % pittetd - University of Pittsburgh ETD (Electronic Theses and Dissertations) LaTeX class
 % Copyright 2003-4 Federico Garcia (feg8@pitt.edu)
 % -------------------------------------------
-% 
+%
 %
 % This program can be redistributed and/or modified under the terms
 % of the LaTeX Project Public License distributed from CTAN archives
@@ -103,9 +103,9 @@
 %
 %This is the guide to the \pittetd \LaTeXe\ document class, designed for the preparation of electronic theses and dissertations (\ETD) at the University of Pittsburgh. It is recommended that users read this entire documentation before starting using \pittetd, so that they will have an idea of the different possibilities and options, some of which are particular to \pittetd and therefore not usual in standard \LaTeX\ classes\index{standard classes}\index{classes>standard}.
 %
-%Users will find below a description of \pittetd usage, extended with an introduction to some of the most relevant features of the |hyperref| package. In addition, when this document has been produced by running \LaTeX\ on the file |pittetd.dtx|, it also contains a commented transcript of the code, so that users can modify things if they need to (and know what they are doing). In the version downloadable from the Pitt~\ETD webpage, this latter part is omitted. A separate document, \emph{Comments on using \LaTeX\ for theses}, also prepared for Pitt~\ETD authors, describes some standard tools of \LaTeX\ that may or may not be known to the reader but can certainly prove useful when writing the thesis or dissertation. Touched upon are topics such as inclusion of graphics and the handling of large, book-length documents \cite{comments}. 
+%Users will find below a description of \pittetd usage, extended with an introduction to some of the most relevant features of the |hyperref| package. In addition, when this document has been produced by running \LaTeX\ on the file |pittetd.dtx|, it also contains a commented transcript of the code, so that users can modify things if they need to (and know what they are doing). In the version downloadable from the Pitt~\ETD webpage, this latter part is omitted. A separate document, \emph{Comments on using \LaTeX\ for theses}, also prepared for Pitt~\ETD authors, describes some standard tools of \LaTeX\ that may or may not be known to the reader but can certainly prove useful when writing the thesis or dissertation. Touched upon are topics such as inclusion of graphics and the handling of large, book-length documents \cite{comments}.
 %
-%Throughout this text reference is made to the \emph{Format Guidelines for Electronic Thesis and Dissertation Preparation at the University of Pittsburgh}, downloadable from the Pitt~\ETD webpage. The abbreviation \FG is used to refer to it; page numbers are indicated in parenthesis.\index{FG (Format Guidelines)} 
+%Throughout this text reference is made to the \emph{Format Guidelines for Electronic Thesis and Dissertation Preparation at the University of Pittsburgh}, downloadable from the Pitt~\ETD webpage. The abbreviation \FG is used to refer to it; page numbers are indicated in parenthesis.\index{FG (Format Guidelines)}
 %
 %Section~\ref{pdf} describes the creation of interactive \PDF files through \LaTeX, introducing the two main tools for that effect, the programs {\PDF}\LaTeX\ and \textsf{dvipdfm}. Section~\ref{installation} explains how to install \pittetd and the main \LaTeX\ packages needed for its proper working. Also, cursory information for the installation of {\PDF}\LaTeX\ and \textsf{dvipdfm} is given.
 %
@@ -113,39 +113,39 @@
 %
 %Detailed information about the options, available commands, and use of \pittetd can be found in section~\ref{usage}. Typesetting of the preliminary pages is described in subsection~\ref{prelim}.
 %
-%Section~\ref{hyperref} describes in an introductory way the basic features of |hyperref|\package{hyperref}, the package that implements interactivity into \LaTeX\ documents. 
+%Section~\ref{hyperref} describes in an introductory way the basic features of |hyperref|\package{hyperref}, the package that implements interactivity into \LaTeX\ documents.
 %
 %Finally, section~\ref{checklist} gives some suggestions for a final format review before submitting an {\small ETD} written with \pittetd. It warns about those problems that are most likely to occur because they lie beyond \pittetd's control.
 %
 %\section[\PDF creation through \LaTeX]{{\large PDF} creation through \LaTeX}\label{pdf}\index{PDF>creation}
 %
-%In principle, \pittetd is equipped to fulfill the basic interactivity requirements of the \FG, namely the creation of bookmarks\index{bookmarks} from the entries in the Table of Contents, the List of Figures, and the List of Tables, and the implementation of these entries themselves as links\index{links} to the corresponding page. This is done by means of invoking the formidable |hyperref|\package{hyperref} package,\footnote{Written by Sebastian Rahtz.} which offers the basic functions for interactive handling (section~\ref{hyperref} below offers an introductory guide to other features from this package that users can take advantage of). Thus, |hyperref| has to be---and it usually is in standard distributions of \LaTeX---installed in the system for \pittetd to be able to fulfill these tasks (section~\ref{installation} offers immediate help on the installation of |hyperref| and other tools, including \pittetd itself). 
+%In principle, \pittetd is equipped to fulfill the basic interactivity requirements of the \FG, namely the creation of bookmarks\index{bookmarks} from the entries in the Table of Contents, the List of Figures, and the List of Tables, and the implementation of these entries themselves as links\index{links} to the corresponding page. This is done by means of invoking the formidable |hyperref|\package{hyperref} package,\footnote{Written by Sebastian Rahtz.} which offers the basic functions for interactive handling (section~\ref{hyperref} below offers an introductory guide to other features from this package that users can take advantage of). Thus, |hyperref| has to be---and it usually is in standard distributions of \LaTeX---installed in the system for \pittetd to be able to fulfill these tasks (section~\ref{installation} offers immediate help on the installation of |hyperref| and other tools, including \pittetd itself).
 %
 %\pittetd has been written under the assumption that the user will create the final |.pdf| file through one of two tools, namely {\PDF}\LaTeX\index{PDF\LaTeX}, or the program \textsf{dvipdfm}\option{dvipdfm}. The user indicates which of the two ways is to be used as an option\option{pdftex}\option{dvipdfm} to the \pittetd class, namely |pdftex| or |dvipdfm| (on the way to load the class and specify options, see section~\ref{loading}). The following sections explain the particularities of each way. A third related option, |nohyperref|\option{nohyperref} option, will be discussed in section~\ref{nohyper}. Note that it is possible to switch back and forth between the three ways just by modifying the relevant option; as far as \pittetd is concerned, nothing else is necessary to effect the change.\footnote{However, when going to/from \texttt{nohyperref}, it is always good to delete any auxiliary files\index{auxiliary files} before running. Also, some of the \texttt{hyperref} package's commands discussed in section~\ref{hyperref} are of course disabled when \texttt{nohyperref} is used.}
 %
 %\subsection[{\PDF}\LaTeX]{{\normalsize PDF}\LaTeX}\index{PDF\LaTeX|(textit}
 %
-%The most direct way to obtain a |.pdf| output file is running {\PDF}\LaTeX\footnote{Created by H\`an Th\'e Th\`an.}\ instead of \LaTeX.  Naturally, {\PDF}\LaTeX\ has to be installed in the system (again, it is usually included in standard distributions of \LaTeX; see section~\ref{installation}). The user has to indicate |pdftex|\options{pdftex}{textit} as an option to \pittetd, and this latter will pass that option to other packages that need it, including |hyperref|\package{hyperref} but also |graphicx|\package{graphicx} and |color|\package{color} (this latter used by |hyperref|). 
+%The most direct way to obtain a |.pdf| output file is running {\PDF}\LaTeX\footnote{Created by H\`an Th\'e Th\`an.}\ instead of \LaTeX.  Naturally, {\PDF}\LaTeX\ has to be installed in the system (again, it is usually included in standard distributions of \LaTeX; see section~\ref{installation}). The user has to indicate |pdftex|\options{pdftex}{textit} as an option to \pittetd, and this latter will pass that option to other packages that need it, including |hyperref|\package{hyperref} but also |graphicx|\package{graphicx} and |color|\package{color} (this latter used by |hyperref|).
 %
-%Note that if this is the chosen method, a regular \LaTeX\ (i.e., not {\PDF}\LaTeX) run will result in an error message\index{error messages} (`\texttt{Why not use pdf(e)TeX binaries?}'). This could affect user's habits, batch files, etc. 
+%Note that if this is the chosen method, a regular \LaTeX\ (i.e., not {\PDF}\LaTeX) run will result in an error message\index{error messages} (`\texttt{Why not use pdf(e)TeX binaries?}'). This could affect user's habits, batch files, etc.
 %
 %There is one more significant drawback to the use of {\PDF}\LaTeX: the running time is sometimes clearly longer than regular \LaTeX. This depends, to be sure, on one of the configuration options of {\PDF}\TeX, namely |\pdfcompresslevel|, and it could be modified. But in that case, the resulting file is incomparably larger.\footnote{In general, a |.pdf|\index{PDF>files} is much larger---much less efficient in all respects---than the |.dvi|\index{DVI>files}. This tendency is reinforced if {\scriptsize PDF}\LaTeX\ is configured to run faster.}\index{PDF\LaTeX|)}
 %
 %\subsection{\textsf{dvipdfm}}\label{dvipdf}\index{dvipdfm=\textsf{dvipdfm}|(textit}
 %
-%As the name indicates, \textsf{dvipdfm}\footnote{Written by Mark A. Wicks.} is one of the programs available to convert |.dvi|\index{DVI>files} files into |.pdf|\index{PDF>files}. The procedure then consists in running \LaTeX\ as usual while the document is in preparation, having loaded \pittetd with |dvipdfm| option\options{dvipdfm}{textit}, thus obtaining (more quickly) the usual (and smaller)|.dvi| output. Only optionally, at strategic points in the development of the document (notably at the end), has the user to worry about \PDF, and apply \textsf{dvipdfm} to the |.dvi| file. This is usually as simple as typing 
+%As the name indicates, \textsf{dvipdfm}\footnote{Written by Mark A. Wicks.} is one of the programs available to convert |.dvi|\index{DVI>files} files into |.pdf|\index{PDF>files}. The procedure then consists in running \LaTeX\ as usual while the document is in preparation, having loaded \pittetd with |dvipdfm| option\options{dvipdfm}{textit}, thus obtaining (more quickly) the usual (and smaller)|.dvi| output. Only optionally, at strategic points in the development of the document (notably at the end), has the user to worry about \PDF, and apply \textsf{dvipdfm} to the |.dvi| file. This is usually as simple as typing
 %
 %|dvipdfm doc.dvi|
 %
 %\noindent in the command line. The file |dvipdfm.pdf| is the user's manual for the program and explains the switches that can be used in the command line.
 %
-%In some |.dvi| viewers\index{DVI>viewers} the bookmarks\index{bookmarks} (and even the links\index{links}) are lost. But the relevant information is recovered by \textsf{dvipdfm} when creating the corresponding |.pdf| file. 
+%In some |.dvi| viewers\index{DVI>viewers} the bookmarks\index{bookmarks} (and even the links\index{links}) are lost. But the relevant information is recovered by \textsf{dvipdfm} when creating the corresponding |.pdf| file.
 %
 %Another significative advantage of \textsf{dvipdfm} is that it tries to solve inclusion of PostScript graphic files, so it is not always necessary to convert them (see also \cite{comments}). To do the job, however, \textsf{dvipdfm} uses \textsf{GhostScript}, and therefore this program must also be installed in the system.\index{dvipdfm=\textsf{dvipdfm}|)}\index{dvipdfm o=\texttt{dvipdfm} option|)}
 %
 %\subsection[Other ways to get a \PDF file and bookmarks]{Other ways to get a {\normalsize PDF} file and bookmarks}\index{PDF>files}\index{bookmarks}
 %
-%There are other ways to obtain a final \PDF output file, but they are all discouraged to use alongside with \pittetd. For example, a common method is to use |dvips|\index{dvips=\texttt{dvips}} to convert a file to the PostScript\index{PostScript>format} format, and then apply Acrobat~Distiller\index{Acrobat Reader} on it. This method involves two conversions; links and especially bookmarks\index{bookmarks} tend to have an erratic behavior. 
+%There are other ways to obtain a final \PDF output file, but they are all discouraged to use alongside with \pittetd. For example, a common method is to use |dvips|\index{dvips=\texttt{dvips}} to convert a file to the PostScript\index{PostScript>format} format, and then apply Acrobat~Distiller\index{Acrobat Reader} on it. This method involves two conversions; links and especially bookmarks\index{bookmarks} tend to have an erratic behavior.
 %
 %Acrobat~\PDF~Writer\index{Acrobat PDF Writer}, a `printer emulator' that `prints' \PDF files\index{PDF>files} will, of course, ignore anything that cannot be printed, including bookmarks\index{bookmarks}. And the other |.dvi|$\leadsto$|.pdf| converter in existence, |dvipdf|\index{dvipdf=\texttt{dvipdf}},\footnote{By Sergey Lesenko.} is not as widely available as \textsf{dvipdfm}\index{dvipdfm=\textsf{dvipdfm}}.
 %
@@ -153,7 +153,7 @@
 %
 %\subsection{No hyperref}\label{nohyper}\options{nohyperref}{(textit}
 %
-%There is a third option concerning the creation of bookmarks and links in \pittetd. Option |nohyperref| will prevent \pittetd from taking care of almost all interactivity requirements, and the user is left the freedom (and the burden) to fulfill them by him- or herself. 
+%There is a third option concerning the creation of bookmarks and links in \pittetd. Option |nohyperref| will prevent \pittetd from taking care of almost all interactivity requirements, and the user is left the freedom (and the burden) to fulfill them by him- or herself.
 %
 %This option might be more useful than it seems, because it allows users to use the |hyperref|\package{hyperref} package itself \emph{their way}, not \pittetd's. There are in the latter's code a series of minor, but substantial, modifications to |hyperref|, and some of the options with which the package is loaded are fixed. As a security measure, \pittetd will not allow the user manually to load the package, unless |nohyperref| is specified. Thus, if a user wants to control |hyperref|'s behavior, this option will be necessary. Section~\ref{diffhyperref} gives some directions on how to do this.
 %
@@ -186,11 +186,11 @@
 %
 %|.../texmf/tex/latex/pittetd|
 %
-%\noindent and place there the |.cls| and |.clo| files. Likewise, the documentation (the file you are reading, |pittetd.dvi|) should be placed in 
+%\noindent and place there the |.cls| and |.clo| files. Likewise, the documentation (the file you are reading, |pittetd.dvi|) should be placed in
 %
 %|.../texmf/doc/latex/pittetd|
 %
-%\noindent and the source files (|pittetd.dtx| and |pittetd.ins|) in 
+%\noindent and the source files (|pittetd.dtx| and |pittetd.ins|) in
 %
 %|.../texmf/source/latex/pittetd|
 %
@@ -223,7 +223,7 @@
 %
 %\pittetd will automatically capitalize\index{capitalization of titles} the title\index{title} of the document and those of the chapters\index{chapters>titles}. However, section titles\index{sections>titles} have to be capitalized by the user.\footnote{This is because modification of the \cs{section} command in order to capitalize not only the title itself, but also the bookmark, although possible, would highly increase the probability of incompatibilities with other packages.}
 %
-%On the other hand, since both sectional headings and captions for tables\index{tables>captions} and figures\index{figures>captions} must have entries in the bookmarks\index{bookmarks>limitations} panel, they are subject to two substantial limitations: they cannot be long, and must consist only of {\small ASCII}\index{ASCII} characters.\footnote{That is why the {\scriptsize FG}\index{FG (Format Guidelines)} recommend using words (not formulas\index{formulas}) in titles and keeping captions\index{captions} ``to one line if possible''~(p.~9).} 
+%On the other hand, since both sectional headings and captions for tables\index{tables>captions} and figures\index{figures>captions} must have entries in the bookmarks\index{bookmarks>limitations} panel, they are subject to two substantial limitations: they cannot be long, and must consist only of {\small ASCII}\index{ASCII} characters.\footnote{That is why the {\scriptsize FG}\index{FG (Format Guidelines)} recommend using words (not formulas\index{formulas}) in titles and keeping captions\index{captions} ``to one line if possible''~(p.~9).}
 %
 %When building the bookmarks\index{bookmarks}, |hyperref|\package{hyperref} will convert some simple \LaTeX\ commands, but in general will ignore most of them. It also will crop everything that goes beyond the maximum length of a bookmark (that varies among \PDF\index{PDF>viewers} viewers; Acrobat~Reader\index{Acrobat Reader} makes it 64 characters). There are two tools to handle these limitations in \LaTeX: the |hyperref| command |\texorpdfstring|\index{texorpdfstring=\verb!*+\texorpdfstring+} (section~\ref{texorpdf}), and the optional argument to |\caption|\index{caption=\verb!*+\caption+} (section~\ref{optional}).
 %
@@ -246,11 +246,11 @@
 %
 %\subsection{Use of packages}\label{packages}\index{packages>use of|(}
 %
-%Almost certainly authors of Pitt~\ETD's will need to load a wide and unpredictable variety of packages. Although \pittetd has been coded with the premise not to `invite' incompatibilities\index{incompatibility|(}, it is possible that some of these packages will create clashes, for there is simply no way to claim universal compatibility with the hundreds of packages already available and with those to come. 
+%Almost certainly authors of Pitt~\ETD's will need to load a wide and unpredictable variety of packages. Although \pittetd has been coded with the premise not to `invite' incompatibilities\index{incompatibility|(}, it is possible that some of these packages will create clashes, for there is simply no way to claim universal compatibility with the hundreds of packages already available and with those to come.
 %
-%However, \emph{partial} compatibility can be (and supposedly has been) achieved. A survey carried out in April--May~2003 gave us a list of packages that are of common use in the Pitt community, and those have been taken into account in the writing of \pittetd. 
+%However, \emph{partial} compatibility can be (and supposedly has been) achieved. A survey carried out in April--May~2003 gave us a list of packages that are of common use in the Pitt community, and those have been taken into account in the writing of \pittetd.
 %
-%For the handling of possible incompatibilities arising in the future, the following policy has been designed. The user who suspects he or she has found a clash should contact the Pitt~\ETD Working Group\index{Pitt ETD>Working Group} and explain the problem, ideally e-mailing a copy of the input file(s)\index{input files}. Hopefully in a reasonable amount of time, a `patch'\index{patches} will be created that solves the problem. The patch takes the form of a file with extension |.pit|, downloadable from \pittetd's webpage\index{pittetd=\textsf  {pittetd}\xspace  >webpage}. 
+%For the handling of possible incompatibilities arising in the future, the following policy has been designed. The user who suspects he or she has found a clash should contact the Pitt~\ETD Working Group\index{Pitt ETD>Working Group} and explain the problem, ideally e-mailing a copy of the input file(s)\index{input files}. Hopefully in a reasonable amount of time, a `patch'\index{patches} will be created that solves the problem. The patch takes the form of a file with extension |.pit|, downloadable from \pittetd's webpage\index{pittetd=\textsf  {pittetd}\xspace  >webpage}.
 %
 %After the file has been downloaded and put where \LaTeX\ can find it (the easiest way is to put it in the same folder as the document itself), it should be accessed. \index{patches|(}\DescribeMacro{\patch}The command |\patch|, that takes the name of the package as its argument, reads any patch that exists for it. For example, there is already a patch for the |achicago| package\package{achicago}; to ensure the proper behavior of this package, the user should type, \emph{after} |\usepackage{achicago}|\index{usepackage=\verb!*+\usepackage+}, the command |\patch{achicago}|.
 %
@@ -280,19 +280,19 @@
 %
 %|\patch{pitthesis}|\index{pitthesis=\textsf{pitthesis} class>patch for|textit}
 %
-%\noindent (the latter only two t's.) Having read the corresponding patch, \pittetd will try to interpret \textsf{pittdiss}- or \textsf{pitthesis}-commands. Hopefully, most times it will succeed; in any case, it will issue warnings\index{warnings} (or error messages\index{error messages>\pittetd's} in the |final|\option{final} option) for things that \emph{have} to be changed. For example, if acknowledgements\index{acknowledgements} are created with \textsf{pitthesis}'s |acknowledgements| environment, \pittetd will warn that now there is no separate preliminary for that, and that this section should be part of the preface.\index{preface} 
+%\noindent (the latter only two t's.) Having read the corresponding patch, \pittetd will try to interpret \textsf{pittdiss}- or \textsf{pitthesis}-commands. Hopefully, most times it will succeed; in any case, it will issue warnings\index{warnings} (or error messages\index{error messages>\pittetd's} in the |final|\option{final} option) for things that \emph{have} to be changed. For example, if acknowledgements\index{acknowledgements} are created with \textsf{pitthesis}'s |acknowledgements| environment, \pittetd will warn that now there is no separate preliminary for that, and that this section should be part of the preface.\index{preface}
 %
 %As an extra safety measure when going from \textsf{pitthesis}\index{pitthesis=\textsf{pitthesis} class} or \textsf{pittdiss}\index{pittdiss=\textsf{pittdiss} class} to \pittetd, all auxiliary files\index{auxiliary files} should be deleted before the first \pittetd run. Also, it is very much recommendable to change |\bibliography|\index{bibliography=\verb!*+\bibliography+} to |\safebibliography|\index{safebibliography=\verb!*+\safebibliography+} since the beginning.\index{patches}\index{classes>related to \pittetd|)}
 %
 %\subsection{Stage and interaction}\label{stage}\index{stage|(textit}\index{warnings|(}\index{error messages>\pittetd's|(}
 %
-%In order to facilitate the process of converting files from standard classes\index{classes>standard} into \pittetd, annoying error messages due to the particularities of \pittetd have been avoided as much as possible. The `stage' of the document is used to decide whether or not the differences should make stop the \LaTeX\ run. The idea is that when the |draft| option\options{draft}{(textit} is used, most problems are reported as `Class~Warnings' that do not stop the process. But if |final|\options{final}{(textit} is used (and eventually it \emph{should} be used), more prominent error messages appear instead. 
+%In order to facilitate the process of converting files from standard classes\index{classes>standard} into \pittetd, annoying error messages due to the particularities of \pittetd have been avoided as much as possible. The `stage' of the document is used to decide whether or not the differences should make stop the \LaTeX\ run. The idea is that when the |draft| option\options{draft}{(textit} is used, most problems are reported as `Class~Warnings' that do not stop the process. But if |final|\options{final}{(textit} is used (and eventually it \emph{should} be used), more prominent error messages appear instead.
 %
-%However, many packages (including the seminal |hyperref|\package{hyperref}, |color|\package{color}, and |graphicx|\package{graphicx}) themselves operate differently when |draft| is specified. So for example, |hyperref| does not create links\index{links} or bookmarks\index{bookmarks}, and |graphicx| does not import external graphic\index{graphics>inclusion of} files. But the user might want to see these features, still not worrying about detailed \pittetd concerns. That is why an intermediate stage |semifinal|\options{semifinal}{(textit} is introduced. The packages will work as usual, but \pittetd will issue mostly warnings, not error messages. This is the default option. 
+%However, many packages (including the seminal |hyperref|\package{hyperref}, |color|\package{color}, and |graphicx|\package{graphicx}) themselves operate differently when |draft| is specified. So for example, |hyperref| does not create links\index{links} or bookmarks\index{bookmarks}, and |graphicx| does not import external graphic\index{graphics>inclusion of} files. But the user might want to see these features, still not worrying about detailed \pittetd concerns. That is why an intermediate stage |semifinal|\options{semifinal}{(textit} is introduced. The packages will work as usual, but \pittetd will issue mostly warnings, not error messages. This is the default option.
 %
 %Both |semifinal| and |draft| issue a final warning at the end of the job, reminding the user to run the document with |final|. \index{stage|)}\index{warnings|)}\index{error messages>\texttt{pittetd}'s|)} As usual, moreover, |draft| makes overfull boxes visible.
 %
-%The `stage' option also governs \pittetd's complaints about the preliminaries when information for the different pages is missing, when the order is wrong, etc.: with |draft| and |semifinal|, there will be a warning, while with |final| there will be an error message.\options{draft}{)}\options{final}{)}\options{semifinal}{)} 
+%The `stage' option also governs \pittetd's complaints about the preliminaries when information for the different pages is missing, when the order is wrong, etc.: with |draft| and |semifinal|, there will be a warning, while with |final| there will be an error message.\options{draft}{)}\options{final}{)}\options{semifinal}{)}
 %
 %\subsection{Auxiliary files}\index{auxiliary files}
 %
@@ -328,14 +328,14 @@
 %
 %The text of a Pitt~\ETD has to be at least ``one half-spaced, with the exception of long quotations\index{quotations}, footnotes\index{footnotes}, bibliographical references\index{bibliography}, and the Index (if included)\index{index}, which may be single-spaced''~(p.~7).\index{FG (Format Guidelines)} A spacing of little more than one-half for regular text has been built in into \pittetd; the text in footnotes and quotations has been set to single spacing. The user can always adjust the spacing in the usual way, |\renewcommand|'ing the command \DescribeMacro{\baselinestretch}|\baselinestretch|\index{baselinestretch=\verb!*+\baselinestretch+}, so that \\
 %\null\quad|\renewcommand\baselinestretch{1.3}|\\
-%increases the built-in spacing by a 30\%---for \emph{all} the text, footnotes included. 
+%increases the built-in spacing by a 30\%---for \emph{all} the text, footnotes included.
 %
-%The spacing-scheme is achieved in \pittetd by building it into the font sizes. Normal-size font (|\normalsize|) is one-half spaced, while all other sizes are single-spaced. The |quote|\index{environments:>quote=\texttt{quote}}\index{quote=\texttt{quote} (environment)} and |quotation|\index{environments:>quotation=\texttt{quotation}}\index{quotation=\texttt{quotation} (environment)} environments, as well as |\footnote|, all of which set a smaller font, produce thus single-spaced text. \DescribeMacro{\singlespace}An additional `size' has been implemented, namely |\singlespace|, which produces regular-size, but single-spaced, text. 
+%The spacing-scheme is achieved in \pittetd by building it into the font sizes. Normal-size font (|\normalsize|) is one-half spaced, while all other sizes are single-spaced. The |quote|\index{environments:>quote=\texttt{quote}}\index{quote=\texttt{quote} (environment)} and |quotation|\index{environments:>quotation=\texttt{quotation}}\index{quotation=\texttt{quotation} (environment)} environments, as well as |\footnote|, all of which set a smaller font, produce thus single-spaced text. \DescribeMacro{\singlespace}An additional `size' has been implemented, namely |\singlespace|, which produces regular-size, but single-spaced, text.
 %
 %\DescribeMacro{\smallskip}\DescribeMacro{\medskip}\DescribeMacro{\bigskip}The spacing command |\smallskip| is set to an amount of a single space; |\medskip| is a line (a little more than one and a half space); and |\bigskip| a double space.\index{spacing|)}
 %
 %\begin{figure}[h]
-%\centering 
+%\centering
 %\rule{.8\textwidth}{.4pt}\\[2mm]
 %|\tiny|\quad\shortstack[l]{\cs{SMALL} or \\\cs{scriptsize}}\quad\shortstack[l]{\cs{Small} or \\\cs{footnotesize}}\quad|\small|\\[2mm]
 %|\normalsize|\\[2mm]
@@ -386,13 +386,13 @@
 %\pittetd will keep track of the order in which the user typesets the preliminaries, and will warn or complain according to the `stage' of the document (see section~\ref{stage}).
 %
 %\subsubsection{Title Page}\label{title}\index{title page|(textit}
-%The title page is produced, as usual, by the command \DescribeMacro{\maketitle}|\maketitle|, but involves several pieces of information in addition to |\title|, |\author| and |\date|, so it is only \emph{deceivingly} similar to the same command in standard \LaTeX\ classes\index{classes>standard}. All efforts have been taken to prevent the differences to ruin the \LaTeX\ run (making easier the conversion from other classes), but the user will eventually have to check it carefully. 
+%The title page is produced, as usual, by the command \DescribeMacro{\maketitle}|\maketitle|, but involves several pieces of information in addition to |\title|, |\author| and |\date|, so it is only \emph{deceivingly} similar to the same command in standard \LaTeX\ classes\index{classes>standard}. All efforts have been taken to prevent the differences to ruin the \LaTeX\ run (making easier the conversion from other classes), but the user will eventually have to check it carefully.
 %
 %\DescribeMacro{\title}The macro |\title| has an optional argument that sets the title of the document as it will appear in the `Document~Info'\index{PDF>Document Info}\index{Document Info} dialog box of Acrobat~Reader\index{Acrobat Reader}. If no optional argument is given, the required argument will be used (however, bear in mind that only a limited portion of it will be visible). In order for this feature to work properly, |\title| must be issued in the preamble\index{preamble} of the document. In the text, the title will be typeset uppercase.\hfill{\small\textbf{Ex.:\ } |\title[An Anatomy of the World]{An Anatomy of %|\\[-2pt]
 %\null\hfill|the World on texts by John Donne, %|\\[-2pt]
 %\null\hfill|for soprano and six instrumentalists}|}
 %
-%\clearpage\DescribeMacro{\author}The |\author| command works much the same as in standard \LaTeX\ classes\index{classes>standard}. Again, it should be issued in the preamble\index{preamble} for the author's name to appear in the `Document~Info'\index{PDF>Document Info}\index{Document Info} dialog box. On the other hand, |\thanks| and |\and| are disabled.\ex|\author{Federico Garcia}|\ample 
+%\clearpage\DescribeMacro{\author}The |\author| command works much the same as in standard \LaTeX\ classes\index{classes>standard}. Again, it should be issued in the preamble\index{preamble} for the author's name to appear in the `Document~Info'\index{PDF>Document Info}\index{Document Info} dialog box. On the other hand, |\thanks| and |\and| are disabled.\ex|\author{Federico Garcia}|\ample
 %
 %\bigskip
 %\noindent The following macros set other information needed by \pittetd to build the preliminaries. None of them is required unless |final|\option{final} option is used. With |semifinal|\option{semifinal}  and |draft|\option{draft}, a warning\index{warnings} is issued informing of any missing commands.
@@ -410,7 +410,7 @@
 %
 %\smallskip\DescribeMacro{\degreesought}According to the option used (|phd|\option{phd}, |ms|,\option{ms} or |ma|\option{ma}), \pittetd sets the value of |\degreesought| to either `Doctor of Philosophy,' `Master of Sciences,' or `Master of Arts'. If desired, |\renewcommand| can be used to modify it.\ex|\renewcommand\degreesought{M. A. in Composition and Theory}|\ample
 %
-%\bigskip\noindent 
+%\bigskip\noindent
 %Figure~\ref{titlefig} is the title page produced by the examples above.
 %
 %\begin{figure}\centering\fbox{\begin{minipage}[c][.65\textheight][c]{.78\textwidth}
@@ -511,12 +511,12 @@
 %\noindent When present, it is \meta{alternate caption}, instead \meta{caption}, what is actually typeset in the list of tables or  figures\index{list of tables}\index{list of figures}, and into the corresponding bookmark\index{bookmarks}. So, if a long caption is necessary, it can be handled as in the following example (note the avoidance of |\cite|\index{cite=\verb!*+\cite+} in the optional argument):
 %
 %{\small\begin{verbatim}
-%\caption[A modern `wave model' of the Indo-European 
-%languages according to Raimo~Antilla~(1972).]{A 
-%modern `wave model' of the Indo-European languages 
-%according to \cite{r-a}. The numbers indicate 24 
-%isogglosses (similarities) shared among different 
-%Indo-European languages. Isogloss 1 indicates the 
+%\caption[A modern `wave model' of the Indo-European
+%languages according to Raimo~Antilla~(1972).]{A
+%modern `wave model' of the Indo-European languages
+%according to \cite{r-a}. The numbers indicate 24
+%isogglosses (similarities) shared among different
+%Indo-European languages. Isogloss 1 indicates the
 %centum:satem split...
 %}
 %\end{verbatim}
@@ -546,7 +546,7 @@
 %
 %The last kind of bibliography styles is that of systems that modify aspects of formatting other than the final list of bibliographical references. All these systems have not only |.bst| files, but also substantial packages (|.sty|). |harvard|\package{harvard}, |natbib|\package{natbib} and |achicago|\package{achicago} are common instances. When \pittetd has a close encounter with packages of the third kind, there can be erratic behavior. It is recommended that |\safebibliography| is used instead of |\bibliography|, but this will probably not be enough. Since there is no general solution, the problems have to be treated individually, with patches\index{patches}, as explained in \ref{packages} above.
 %
-%The three mentioned systems have already been tackled: |natbib|\package{natbib} is an extremely well-written program, so that conciliating it with \pittetd is easy and does not merit a separate patch file. No special treatment (other than using |\safebibliography|) will normally be needed. 
+%The three mentioned systems have already been tackled: |natbib|\package{natbib} is an extremely well-written program, so that conciliating it with \pittetd is easy and does not merit a separate patch file. No special treatment (other than using |\safebibliography|) will normally be needed.
 %
 %On the other hand, |harvard|\package{harvard} is a more complicated case, for the package creates interactive links. The |hyperref|\package{hyperref} package has support for |harvard|\package{harvard}, but there is no way to foresee potential problems. It is strongly recommended if possible not to use this package, replacing it with |natbib|\package{natbib}.
 %
@@ -563,21 +563,21 @@
 %
 %\subsection{The index}\index{index|(textit}
 %
-%The code of \pittetd defines the environment |theindex|\index{environments:>theindex=\texttt{theindex}}\index{theindex=\texttt{theindex} (environment)} to suit the \FG, but otherwise exactly as standard classes define it. This means that the production of the index, be it manually or through \emph{MakeIndex}\index{MakeIndex=\emph{MakeIndex}}, remains the same. |hyperref|\package{hyperref} offers an option to create a `hyper-index,' whose page numbers are interactive links. However, the option is not very robust, and therefore \pittetd uses |hyperref| but turns hyper-indexing off. 
+%The code of \pittetd defines the environment |theindex|\index{environments:>theindex=\texttt{theindex}}\index{theindex=\texttt{theindex} (environment)} to suit the \FG, but otherwise exactly as standard classes define it. This means that the production of the index, be it manually or through \emph{MakeIndex}\index{MakeIndex=\emph{MakeIndex}}, remains the same. |hyperref|\package{hyperref} offers an option to create a `hyper-index,' whose page numbers are interactive links. However, the option is not very robust, and therefore \pittetd uses |hyperref| but turns hyper-indexing off.
 %
-%At the moment there is no support for multiple indexes to be generated automatically by \emph{MakeIndex}\index{MakeIndex=\emph{MakeIndex}}, although several indexes can be manually created.\index{index|)} 
+%At the moment there is no support for multiple indexes to be generated automatically by \emph{MakeIndex}\index{MakeIndex=\emph{MakeIndex}}, although several indexes can be manually created.\index{index|)}
 %
 %\section{Using the \texttt{hyperref} package}\index{packages mentioned:>hyperref=\texttt  {hyperref}>use of|(}\index{hyperref=\texttt  {hyperref} package>use of|(}\label{hyperref}
 %
 %This section is a very brief and incomplete guide to some extra features of the |hyperref| package that have not been explained before. Unfortunately, if something is missing to |hyperref|, it is documentation. Useful information is to be found in \cite{manual} and \cite{paper}, but those documents are not intended for the average user. The present section is a translated adaptation of the relevant section in \cite{luly}, to my knowledge the most complete (but still not comprehensive) user's guide on the package.
 %
-%Section~\ref{diffhyperref} provides a starting point to use |hyperref| in a way different of \pittetd's default. 
+%Section~\ref{diffhyperref} provides a starting point to use |hyperref| in a way different of \pittetd's default.
 %
-%\subsection{New user's commands}\index{links|(}\label{texorpdf} 
+%\subsection{New user's commands}\index{links|(}\label{texorpdf}
 %
 %Certain character strings (notably the text of the bookmarks\index{bookmarks>limitations}) are converted by |hyperref| into {\small ASCII}\index{ASCII} text, ignoring most \LaTeX\ commands. In general, macros that expand into a piece of text (such as the |\LaTeX| command itself, the italic correction |\/|, or things like |`| and |'|) are appropriately handled. But math mode, for example, is completely ignored. The process leads virtually never to an error message\index{error messages}; warnings, however, are issued for every ignored token.
 %
-%\DescribeMacro{\texorpdfstring}In any case, the user has a way to `help' |hyperref| in the conversion, namely the command 
+%\DescribeMacro{\texorpdfstring}In any case, the user has a way to `help' |hyperref| in the conversion, namely the command
 %
 %|\texorpdfstring{|\meta{\TeX\ text}|}{|\meta{\PDF text}|}|
 %
@@ -613,7 +613,7 @@
 %
 %\noindent{\ttfamily colorlinks,\\[-2pt]
 %hyperindex=false\\[-2pt]
-%bookmarks, bookmarksnumbered, bookmarksopen, \\[-2pt] 
+%bookmarks, bookmarksnumbered, bookmarksopen, \\[-2pt]
 %citecolor=blue, urlcolor=blue}
 %
 %An option not used by \pittetd that might be relevant is |backref|, that makes the bibliographical entries produce links to the sections in which the corresponding |\cite| appear (there is also the alternative |pagebackref|, with links leading to the \emph{page} of the |\cite|'s).
@@ -647,7 +647,7 @@
 %\bibitem{comments} Federico Garcia, \emph{Comments on using \LaTeX\ for theses}, July~2003, file |comments.dvi| or |comments.pdf|, available at \pittetd's webpage.
 %\bibitem{manual} Sebastian Rahtz, \emph{Hypertext marks in \LaTeX: the \textsf{hyperref} package}, June~1998, file |manual.pdf|, part of the |hyperref| package distribution. Available at \pittetd's webpage.
 %\bibitem{paper} Heiko Oberdiek, \emph{PDF information and navigation elements with hyperref, pdf\TeX, and thumbpdf}, paper  at Euro\TeX'99. File |paper.pdf|, part of the |hyperref| package distribution. Available at \pittetd's webpage.
-%\bibitem{luly} Rodrigo De Castro, \emph{El Universo \LaTeX}, 2nd.\ edition, Bogot\'a, Universidad Nacional de Colombia, 2003. 
+%\bibitem{luly} Rodrigo De Castro, \emph{El Universo \LaTeX}, 2nd.\ edition, Bogot\'a, Universidad Nacional de Colombia, 2003.
 %\bibitem{options}Sebastian Rahtz, \emph{hyperref package options}, October 1999, file |options.pdf|, part of the |hyperref| package distribution. Available at \pittetd's webpage.
 %\end{thebibliography}
 %
@@ -664,7 +664,7 @@
 %<*class>
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{pittetd}[2004/08/17 v1.618
-    University of Pittsburgh ETD 
+    University of Pittsburgh ETD
     (Electronic Thesis & Dissertations) class]
 %    \end{macrocode}
 %
@@ -672,10 +672,10 @@
 %
 %    \begin{macrocode}
 \newwrite\@etdaux
-\newif\if@errors 
-\newif\if@keywords 
-\newif\if@tables 
-\newif\if@figures 
+\newif\if@errors
+\newif\if@keywords
+\newif\if@tables
+\newif\if@figures
 \newif\if@mainmatter\@mainmattertrue
 \newif\if@hyper@ref\@hyper@reftrue
 \newif\if@secletters
@@ -730,7 +730,7 @@
         \renewcommand\newblock{\par}}}
 %    \end{macrocode}
 %
-%Now for \pittetd's own options. 
+%Now for \pittetd's own options.
 %    \begin{macrocode}
 \newcommand\t@or@d{}
 \newcommand\@this{}
@@ -821,7 +821,7 @@
 \newcommand\singlespace{\@setfontsize\singlespace\@xpt\@xiipt}
 \setlength\footnotesep{6.65\p@}
 \setlength{\skip\footins}{9\p@ \@plus 4\p@ \@minus 2\p@}
-\setlength\parindent{15\p@} 
+\setlength\parindent{15\p@}
 %</10pt>
 %    \end{macrocode}
 %    \begin{macrocode}
@@ -956,13 +956,13 @@
 \setlength\fboxsep{3\p@}
 \setlength\fboxrule{.4\p@}
 \@addtoreset{equation}{chapter}
-\renewcommand\theequation{\ifnum \c@chapter>\z@ 
+\renewcommand\theequation{\ifnum \c@chapter>\z@
     \thechapter.\fi\@arabic\c@equation}
 %    \end{macrocode}
 %
 %Page style and initialization:
 %    \begin{macrocode}
-\pagestyle{plain} 
+\pagestyle{plain}
 \pagenumbering{roman}
 \setcounter{footnote}{0}
 \let\@openbib@code\@empty
@@ -977,7 +977,7 @@
 %
 %\subsection{Counters and numbers}
 %
-%The issue here is the two kinds of section numbering, 1.1.1.1 or I.A.1.a. In the second case, the headings for each section is \emph{not} to include the `number' of the previous (I. First Chapter; but A. First section). This involves two subtleties concerning cross references in the text: firstly, a reference to `section B' would mean nothing without the chapter `number;' secondly, the `number' bears a final period in headings, but we do not want the period to appear within the text. 
+%The issue here is the two kinds of section numbering, 1.1.1.1 or I.A.1.a. In the second case, the headings for each section is \emph{not} to include the `number' of the previous (I. First Chapter; but A. First section). This involves two subtleties concerning cross references in the text: firstly, a reference to `section B' would mean nothing without the chapter `number;' secondly, the `number' bears a final period in headings, but we do not want the period to appear within the text.
 %
 %\begin{macro}{\period@or@not}\begin{macro}{\gobble@or@not}This is handled with the |\period@or@not| and |\gobble@or@not| mechanisms. In principle, both commands expand to nothing, but when |\@withperiod| or |\@withgobble| are declared (always locally in a group), they expand to period or to gobble.
 %    \begin{macrocode}
@@ -1165,7 +1165,7 @@
     \fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi
     }
     \newcommand\SMC@unknown@warning{\ClassWarning{pittetd}{%
-        \string\SMC: unrecognized text font size 
+        \string\SMC: unrecognized text font size
         command---using \string\small}}
     \newcommand\textSMC[1]{{\SMC #1}}
     \newcommand\acro[1]{\textSMC{#1}\@}}{}
@@ -1237,7 +1237,7 @@
     \gdef\@date{\ #1\ }}
 \edef\today{\ifcase\month\or
   January\or February\or March\or April\or May\or June\or
-  July\or August\or September\or October\or November\or 
+  July\or August\or September\or October\or November\or
   December\fi\space\number\day, \number\year}
 \date{\today}
 %    \end{macrocode}\end{macro}
@@ -1251,12 +1251,12 @@
 %
 %\begin{macro}{\@degree}\begin{macro}{\@school}And there are many other commands that regular \LaTeX\ never defined. They have to be kept from stopping the run, so we initialize some of values to produce a warning (or error, according to stage).
 %    \begin{macrocode}
-\newcommand\@degree{\@nolinemessage{No \string\degree\space 
-    command}{It is required to list the author's previous 
+\newcommand\@degree{\@nolinemessage{No \string\degree\space
+    command}{It is required to list the author's previous
     degree(s). Use the \string\degree\space (or \string\previousdegree\space command.}}
-\newcommand\@school{\@nolinemessage{No \string\school\space 
-    command}{It is required to name the school (and 
-    optionally the department). Use the \string\school\space 
+\newcommand\@school{\@nolinemessage{No \string\school\space
+    command}{It is required to name the school (and
+    optionally the department). Use the \string\school\space
     command.}}
 \newcommand\@@school{\relax}
 %    \end{macrocode}\end{macro}\end{macro}
@@ -1291,14 +1291,14 @@
     \global\@expectedprelim{#2}}
 \newcommand\@disable[1]{%
     \global\expandafter\def\csname @#1message\endcsname{%
-        \@linemessage{Something is missing or misplaced. 
+        \@linemessage{Something is missing or misplaced.
             I was expecting \the\@expectedprelim}{%
             The preliminaries should be placed in the next order:
-            \MessageBreak title, committee, [copyright], 
-            abstract, [preface/foreword], tableofcontents, 
+            \MessageBreak title, committee, [copyright],
+            abstract, [preface/foreword], tableofcontents,
             [listoftables], [listoffigures].\MessageBreak
-            \MessageBreak I think something is either missing or 
-            misplaced in your document. I will typeset things in 
+            \MessageBreak I think something is either missing or
+            misplaced in your document. I will typeset things in
             the given order, but you should double-check.}}}
 %    \end{macrocode}\end{macro}\end{macro}
 %When something is `enabled,' the `expected preliminary' (used by \pittetd when complaining) is changed (it's the second argument to |\@enable|). Note that the enabled preliminaries and expected ones are not necessarily the same, because there are optional preliminaries.
@@ -1307,9 +1307,9 @@
 %    \begin{macrocode}
 \newcommand\@@disable[2]{%
     \global\expandafter\def\csname @#1message\endcsname{%
-        \@linemessage{There is no #2}{I have found no #2, so it 
+        \@linemessage{There is no #2}{I have found no #2, so it
         makes no sense to me to include a list of them.
-        Proceed, but expect an ugly heading followed by 
+        Proceed, but expect an ugly heading followed by
         nothing...}}}
 %    \end{macrocode}\end{macro}
 %
@@ -1328,7 +1328,7 @@
 %
 %\subsubsection{Bookmarking the preliminaries}
 %
-%Every preliminary is bookmarked by default. This is done by placing an |\hypertarget| and writing directly into the bookmark file, |\@outlinefile| (the bookmarks of figures and tables are discussed below). Option |nohyperref| turns this off, but in a round-about way: the test is no |\if@hyper@ref|, but |\@ifundefined{@outlinefile}|, because if no driver (|pdftex| or |dvipdfm|) is loaded by the user, |hyperref| will not create bookmarks anyway (it does not know which convention to use). 
+%Every preliminary is bookmarked by default. This is done by placing an |\hypertarget| and writing directly into the bookmark file, |\@outlinefile| (the bookmarks of figures and tables are discussed below). Option |nohyperref| turns this off, but in a round-about way: the test is no |\if@hyper@ref|, but |\@ifundefined{@outlinefile}|, because if no driver (|pdftex| or |dvipdfm|) is loaded by the user, |hyperref| will not create bookmarks anyway (it does not know which convention to use).
 %
 %\subsubsection{The title}
 %
@@ -1338,7 +1338,7 @@
     \if@dategiven
         \if@yeargiven\else
             \ClassWarningNoLine{pittetd}{%
-                I assumed `\@year' for the year. 
+                I assumed `\@year' for the year.
                 You can use \string\year\space to change it}%
         \fi
     \fi
@@ -1390,7 +1390,7 @@
     \@committee\expandafter{\the\@committee#1\@commline}}
 %    \end{macrocode}\end{macro}\end{macro}
 %
-%Thus the register |\@committee| is a list of members separated by |\@comline|. The latter expands into |\\| only when the list is actually typeset. 
+%Thus the register |\@committee| is a list of members separated by |\@comline|. The latter expands into |\\| only when the list is actually typeset.
 %
 %\begin{macro}{\committeepage}Now for the actual page (which is typeset only if the user provided at least one |\committeemember|).
 %    \begin{macrocode}
@@ -1413,7 +1413,7 @@
         \if@dategiven
             It was defended on\\
             \@date\\ \else\ClassWarningNoLine{pittetd}{%
-            You really should provide the date of the defense 
+            You really should provide the date of the defense
             (command \string\date)}\fi
         \ifnum\value{@members}>1
             \if@dategiven and \else It was \fi
@@ -1427,7 +1427,7 @@
         \else
             \ifx\t@or@d\@phd\@linemessage{Just one committee
             member}{For Ph. D. dissertations, the whole committee
-            must be included. For the moment, I will typeset only 
+            must be included. For the moment, I will typeset only
             the advisor.}\fi
             \vfill\fi
 %    \end{macrocode}
@@ -1437,12 +1437,12 @@
         \vfill
         \newpage}
         \renewcommand\committeemember[1]{\ClassError{pittetd}{%
-            Command \string\committeemember\space after 
-            \string\makecommittee}{The new name will just be 
+            Command \string\committeemember\space after
+            \string\makecommittee}{The new name will just be
             ignored.}}
         \let\makecommittee\relax
     \else\@linemessage{No members for the committee}{%
-        I will ignore the \string\makecommittee\space command 
+        I will ignore the \string\makecommittee\space command
         until you give me some names.}
     \fi
     \@enable{copyright}{\begin{abstract}}%
@@ -1688,9 +1688,9 @@
 \let\coadvisor\committeemember
 \newenvironment{acknowledgements}{%
     \preliminarychapter{ACKNOWLEDGEMENTS}%
-    \@linemessage{Acknowledgments should be included in the 
-    preface}{I'm complaining because this comes from the 
-    `pittthesis' class. You haven't been reading my 
+    \@linemessage{Acknowledgments should be included in the
+    preface}{I'm complaining because this comes from the
+    `pittthesis' class. You haven't been reading my
     warnings.}}{\relax}
 \newenvironment{committeesignature}[1][5]{\relax}{\makecommittee}
 \let\advisorname\@gobble
@@ -1733,9 +1733,9 @@
 \let\disstitlepage\maketitle
 \let\committeepage\makecommittee
 \newenvironment{nomenclature}{\preliminarychapter{NOMENCLATURE}
-    \@linemessage{Nomenclature is not a recognized 
-    preliminary.}{I'm complaining because this comes from the 
-    `pittdiss' class. You haven't been reading my 
+    \@linemessage{Nomenclature is not a recognized
+    preliminary.}{I'm complaining because this comes from the
+    `pittdiss' class. You haven't been reading my
     warnings.}}{\relax}
 \let\appendices\appendix
 \let\pittdiss@patch\@empty
@@ -1760,9 +1760,9 @@
         \addpenalty\@secpenalty\addvspace\@tempskipa
     \fi
     \@ifstar
-        {\ClassWarning{pittetd}{Starred 
-            \expandafter\string\csname #1\endcsname*\space 
-            has been treated as 
+        {\ClassWarning{pittetd}{Starred
+            \expandafter\string\csname #1\endcsname*\space
+            has been treated as
             \expandafter\string\csname #1\endcsname}%
         \@ssect{#3}{#4}{#5}{#6}}%
         {\@ssect{#3}{#4}{#5}{#6}}}
@@ -1785,17 +1785,17 @@
             \addpenalty\@secpenalty\addvspace\@tempskipa
         \fi
         \@ifstar
-            {\ClassWarning{pittetd}{Starred 
-                \expandafter\string\csname ##1\endcsname*\space 
-                has been treated as 
+            {\ClassWarning{pittetd}{Starred
+                \expandafter\string\csname ##1\endcsname*\space
+                has been treated as
                 \expandafter\string\csname ##1\endcsname}%
             \@dblarg{\@sect{##1}{##2}{##3}{##4}{##5}{##6}}}%
             {\@dblarg{\@sect{##1}{##2}{##3}{##4}{##5}{##6}}}}%
     \renewcommand\chapter{\clearpage\global\@topnum\z@
         \@afterindentfalse
         \@ifstar{%
-            \ClassWarning{pittetd}{Starred 
-                \string\chapter*\space has been treated as 
+            \ClassWarning{pittetd}{Starred
+                \string\chapter*\space has been treated as
                 \string\chapter}%
             \@dblarg{\@chapter}}{\@dblarg\@chapter}}}
 \newcommand\chapter{\clearpage\@startbody\chapter}
@@ -1884,8 +1884,8 @@
         \protected@write\@auxout{}%
             {\string\stepcounter{\string @appno}}%
         \@ifstar{%
-            \ClassWarning{pittetd}{Starred 
-                \string\chapter*\space has been treated as 
+            \ClassWarning{pittetd}{Starred
+                \string\chapter*\space has been treated as
                 \string\chapter}%
             \@dblarg{\@appendix}}{\@dblarg\@appendix}}
     \let\appendix\relax}
@@ -1930,7 +1930,7 @@
         \ifnum\@tempskipa > \@floatl
             \global\@floatl = \@tempskipa
         \fi}
-\newenvironment{table*} 
+\newenvironment{table*}
     {\global\@tablestrue
         \singlespace\@dblfloat{table}}{%
         \end@dblfloat
@@ -1954,7 +1954,7 @@
         \ifnum\@tempskipa > \@floatl
             \global\@floatl = \@tempskipa
         \fi}
-\newenvironment{figure*} 
+\newenvironment{figure*}
     {\global\@figurestrue
         \singlespace\@dblfloat{figure}}{%
         \end@dblfloat
@@ -1965,9 +1965,9 @@
         \fi}
 %    \end{macrocode}
 %
-%\begin{macro}{\@makecaption}This modified version of |\@makecaption| can be lost if some package redefines it, but it would not hurt much. Only the warning would be lost. 
+%\begin{macro}{\@makecaption}This modified version of |\@makecaption| can be lost if some package redefines it, but it would not hurt much. Only the warning would be lost.
 %    \begin{macrocode}
-\def\@makecaption#1#2{%   
+\def\@makecaption#1#2{%
     \vskip\abovecaptionskip
     \sbox\@tempboxa{#1: #2}%
     \ifdim \wd\@tempboxa >\hsize
@@ -2004,7 +2004,7 @@
 %    \begin{macrocode}
 \def\@listi{\topsep\smallskipamount
     \leftmargin\leftmargini
-    \parsep \z@ \@plus 2\p@ 
+    \parsep \z@ \@plus 2\p@
     \itemsep \z@ \@plus 2\p@}
 \let\@listI\@listi\@listi
 \def\@listii{\leftmargin\leftmarginii
@@ -2017,7 +2017,7 @@
     \labelwidth\leftmariniii
     \advance\labelwidth-\labelsep
     \topsep \z@ \@plus\p@
-    \parsep \z@ 
+    \parsep \z@
     \itemsep \topsep}
 \def\@listiv{\leftmargin\leftmarginiv
     \labelwidth\leftmarginiv
@@ -2064,7 +2064,7 @@
     {\endlist}
 %    \end{macrocode}
 %
-%Since |quotation| and |quote| are redefined (against \FG) by the |achicago| package, we must include the following definitions in the patch. 
+%Since |quotation| and |quote| are redefined (against \FG) by the |achicago| package, we must include the following definitions in the patch.
 %    \begin{macrocode}
 \newenvironment{quotation}\relax\relax
 \newenvironment{quote}\relax\relax
@@ -2120,7 +2120,7 @@
     \@clubpenalty \clubpenalty
     \widowpenalty4000%
     \sfcode`\.\@m}
-    {\def\@noitemerr{\@latex@warning{Empty 
+    {\def\@noitemerr{\@latex@warning{Empty
         `thebibliography' environment}}%
     \endlist}
 %    \end{macrocode}
@@ -2142,7 +2142,7 @@
     \setlength{\itemsep}{.5\@singleline \@plus 4\p@}%
     \def\@listi{\topsep\z@
         \leftmargin\leftmargini
-        \parsep \z@ \@plus 2\p@ 
+        \parsep \z@ \@plus 2\p@
         \itemsep .5\@singleline \@plus 2\p@}
     \@afterheading
     \let\@safebibliography\relax}
@@ -2179,7 +2179,7 @@
     \sloppy
     \clubpenalty4000 \widowpenalty4000
     }{%
-    \def\@noitemerr{\@latex@warning{Empty 
+    \def\@noitemerr{\@latex@warning{Empty
         `thebibliography' environment}}%
     \relax\end{list}}
 \let\achicago@patch\@empty
@@ -2216,7 +2216,7 @@
 %The \LaTeX\ run of the document has carefully taken note of certain values for the next run. It is now time to write them down in the |.etd| file.
 %    \begin{macrocode}
 \AtEndDocument{\immediate\openout\@etdaux=\jobname.etd
-    \if@tables 
+    \if@tables
         \immediate\write\@etdaux{\string\@tablestrue}
     \fi
     \if@figures
@@ -2232,9 +2232,9 @@
       \string\setlength{\string\@subsubsectionl}{\the\@subsubsectionl}}
     \immediate\write\@etdaux{%
       \string\setlength{\string\@floatl}{\the\@floatl}}
-    \immediate\closeout\@etdaux} 
+    \immediate\closeout\@etdaux}
 %    \end{macrocode}
 %
 %And that is it.
-%\IndexPrologue{\section*{Index}\addcontentsline{toc}{section}{Index} Numbers written in italics refer to the page where the corresponding entry is described. A list of mentioned packages is found under `packages mentioned;' of environments under `environments;' of \pittetd options under `\pittetd.' For commands, numbers in regular font refer to code lines, and to the line of the definition if underlined.} 
-%\PrintIndex 
+%\IndexPrologue{\section*{Index}\addcontentsline{toc}{section}{Index} Numbers written in italics refer to the page where the corresponding entry is described. A list of mentioned packages is found under `packages mentioned;' of environments under `environments;' of \pittetd options under `\pittetd.' For commands, numbers in regular font refer to code lines, and to the line of the definition if underlined.}
+%\PrintIndex
