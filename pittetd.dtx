@@ -399,7 +399,7 @@
 %
 %These commands are analogous, but not identical, to additional commands in the classes \textsf{pitthesis}\index{pitthesis=\textsf{pitthesis} class} and \textsf{pittdiss}\index{pittdiss=\textsf{pittdiss} class}. Patches are available to facilitate conversion from those classes to \pittetd.
 %
-%\DescribeMacro{\year}The title page does not include the whole date, but only the year. By default, this is set to the current year; the user can optionally specify it with the command |\year|.\ex|\year{2002}|\ample
+%\DescribeMacro{\setyear}The title page does not include the whole date, but only the year. By default, this is set to the current year; the user can optionally specify it with the command |\setyear|.\ex|\setyear{2002}|\ample
 %
 %\DescribeMacro{\degree}The information of the author's previous degrees is provided by the |\degree| command, and should contain the degree, institution, and year of the each degree. Several lines or degrees can be separated  with |\\|.\ex|\degree{B.S. in Music (Composition),\\Bogot\'a, 2001}|\ample
 %
@@ -1242,10 +1242,10 @@
 \date{\today}
 %    \end{macrocode}\end{macro}
 %
-%\begin{macro}{\year}The year, on the contrary, must be present. Since it is not a standard \LaTeX\ requirement, we provide for the user not having thought of it: it assumes the current year and makes sure to remember that it was not provided.
+%\begin{macro}{\setyear}The year, on the contrary, must be present. Since it is not a standard \LaTeX\ requirement, we provide for the user not having thought of it: it assumes the current year and makes sure to remember that it was not provided.
 %    \begin{macrocode}
 \edef\@year{\number\year}
-\renewcommand{\year}[1]{%
+\newcommand{\setyear}[1]{%
     \gdef\@year{#1}\@yeargiventrue}
 %    \end{macrocode}\end{macro}
 %
@@ -1339,7 +1339,7 @@
         \if@yeargiven\else
             \ClassWarningNoLine{pittetd}{%
                 I assumed `\@year' for the year.
-                You can use \string\year\space to change it}%
+                You can use \string\setyear\space to change it}%
         \fi
     \fi
     \@ifundefined{@outlinefile}{}{%

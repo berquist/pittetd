@@ -338,7 +338,7 @@
   December\fi\space\number\day, \number\year}
 \date{\today}
 \edef\@year{\number\year}
-\renewcommand{\year}[1]{%
+\newcommand{\setyear}[1]{%
     \gdef\@year{#1}\@yeargiventrue}
 \newcommand\@degree{\@nolinemessage{No \string\degree\space
     command}{It is required to list the author's previous
@@ -392,7 +392,7 @@
         \if@yeargiven\else
             \ClassWarningNoLine{pittetd}{%
                 I assumed `\@year' for the year.
-                You can use \string\year\space to change it}%
+                You can use \string\setyear\space to change it}%
         \fi
     \fi
     \@ifundefined{@outlinefile}{}{%
