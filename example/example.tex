@@ -21,9 +21,19 @@
 \usepackage{booktabs}
 \usepackage{etoolbox}
 \usepackage{graphicx}
+\usepackage[usenames,dvipsnames,svgnames,hyperref,table]{xcolor}
 %
 \BeforeBeginEnvironment{algorithmic}{\begin{singlespace}}
 \AfterEndEnvironment{algorithmic}{\end{singlespace}}
+%
+\definecolor{carmine}{HTML}{960018}
+%
+\hypersetup{%
+  colorlinks=true,%
+  citecolor=black,%
+  linkcolor=black,%
+  urlcolor=carmine,%
+}
 %
 \input{./preamble}
 \begin{document}
