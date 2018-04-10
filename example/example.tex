@@ -37,6 +37,16 @@
 %
 \usepackage{example}
 %
+\renewcommand\listalgorithmname{LIST OF ALGORITHMS}
+\renewcommand\lstlistlistingname{LIST OF LISTINGS}
+%
+\makeatletter
+\patchcmd{\listof}% <cmd>
+  {\float@listhead}% <search>
+  {\@namedef{l@#1}{\l@figure}\float@listhead}% <replace>
+  {}{}% <success><failure>
+  \makeatother
+%
 \input{./preamble}
 \begin{document}
 \maketitle
@@ -46,6 +56,8 @@
 \tableofcontents
 \listoftables
 \listoffigures
+\listofalgos
+\listoflistings
 %
 \preface
 \input{./preface}

@@ -1,3 +1,8 @@
+\newcommand{\op}[1]{\ensuremath{\hat{#1}}}
+\newcommand{\lr}[2]{\braket{\braket{\op{#1}; \op{#2}}}}
+\newcommand{\mat}[1]{\ensuremath{\mathbf{#1}}}
+\newcommand\qchem{\textsc{Q-Chem}}
+
 \chapter{First chapter}
 
 I am fake contents of the first chapter.
@@ -8,7 +13,7 @@ I am the first section.
 
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{./diff_overlay.pdf}
+  \includegraphics[width=0.90\textwidth]{./diff_overlay.pdf}
   \caption{Asymmetry in the 1st-order finite-difference polarizability\label{fig:finite-difference-numerical-noise}}
 \end{figure}
 
@@ -54,3 +59,120 @@ I am the first section.
   The regularization term with hyperparameter \(\lambda\) is set to zero if \(j = 0\) (the bias node).
   \caption{Backpropagation for computing weight updates in a fully-connected neural network}
 \end{algorithm}
+
+\algnewcommand\Break{\textbf{break}}
+\algnewcommand\Not{\textbf{not}}
+\algnewcommand\True{\textbf{true}}
+\algnewcommand\False{\textbf{false}}
+\algnewcommand\Rhsvecs{\textsf{rhsvecs}}
+\algnewcommand\Rspvecs{\textsf{rspvecs}}
+\algnewcommand\Operators{\textsf{operators}}
+\algnewcommand\Resp{\textsf{resp}}
+\algnewcommand\AllowCT{\textsf{allow\_ct?}}
+
+\begin{algorithm}
+  \centering
+  \begin{algorithmic}[1]
+  \Procedure{solve\_linear\_response}{\Resp, \Operators, occupations, \(\mat{C}, \mat{F}, \mat{S}, \vartheta\), maxiter, \AllowCT}
+  \For{\(s \gets 1, N_{spin}\)}
+    \State Transformation of \(\mat{F}\) and \(\mat{S}\) from AO to full MO basis
+    \State \(E_{ia,jb} = F_{ab}S_{ij} - F_{ij}S_{ab}\)
+    \Comment{Form non-orthogonal orbital energy matrix \(\mat{E}\)}
+    \If{\Not{} \AllowCT{}}
+      \State Zero cross-fragment \(ia\) indices and shrink dimensions of \(\mat{E}\)
+    \EndIf
+    \State Form inverse for denominator \(\mat{E}^{-1}\)
+  \EndFor
+  \For{\(i \gets 1, N_{operators}\)}
+    \For{\(c \gets 1, N_{components}\)}
+      \State \((\mat{Z})_{\mu\nu} \gets \Operators[i,c,\mu\nu]\)
+      \Comment{Select operator component as perturbation for right-hand side}
+      \State Transform operator component from AO to occ-virt MO basis and append \(\mat{Z}_{ia}\) to \Rhsvecs
+      \If{\Not{} \AllowCT{}}
+        \State Zero cross-fragment \(ia\) indices and shrink dimensions of \(\mat{Z}\)
+      \EndIf
+      \State \(\mat{X}^{(0)} \gets \mat{0}\)
+      \Comment{Form initial guess for response vector (uncoupled result)}
+      \State \(converged \gets \False\)
+      \For{\(n \gets 1, maxiter\)}
+        \State \(D_{\mu\nu}^{X} \gets C_{\mu i} X_{ia}^{(n-1)} C_{\nu a}\)
+        \Comment{Form perturbed density}
+        \State \(J_{\mu\nu}^{X}\left[\mat{D}^{X}\right], K_{\mu\nu}^{X}\left[\mat{D}^{X}\right] \gets fock\_build(\mat{D}^{X})\)
+        \Comment{Form Coulomb and exchange contributions}
+        \State \(\left(\mat{R}^{(n)}\right)_{\mu\nu} \gets 4 \mat{J}^{X} - \mat{K}^{X} - \left(\mat{K}^{X}\right)^{T}\)
+        \Comment{Form half-transformed orbital Hessian-vector product (here, \(\mat{G} = \mat{A}^{s} + \mat{B}^{s}\))}
+        \State Do second transformation of Hessian-vector product \(\left(\mat{R}\right)_{ia}^{(n)}\)
+        \If{\Not{} \AllowCT{}}
+          \State Zero cross-fragment \(ia\) indices and shrink dimensions of \(\mat{R}, \mat{X}\)
+        \EndIf
+        \State \(X_{ia}^{(n)} \gets (\mat{E}^{-1})_{ia,jb} \left[ Z_{jb} - R_{jb}^{(n)} \right]\)
+        \Comment{Update response vector}
+        \If{\Not{} \AllowCT{}}
+          \State Restore dimensions of \(\mat{X}\)
+        \EndIf
+        \If{\(||\mat{X}^{(n)} - \mat{X}^{(n-1)}|| < \vartheta\)}
+          \State \(converged \gets \True\)
+          \State Append \(\mat{X}^{(n)}\) to \Rspvecs
+          \State \Break
+        \EndIf
+  \algstore{lrmi}
+  \end{algorithmic}
+  \caption{Static linear response approach within fragment-localized formalism.}
+  \label{alg:solve-linear-response}
+\end{algorithm}
+\begin{algorithm}
+  \centering
+  \begin{algorithmic}[1]
+  \algrestore{lrmi}
+        \EndFor
+      \If{\Not{} \(converged\)}
+        \State crash
+      \EndIf
+    \EndFor
+  \EndFor
+  \State \(\Resp \gets \mat{0}\)
+  \Comment{Form all possible permutations of property gradient and response vectors}
+  \For{\(a \gets 1, len(\Rhsvecs)\)}
+    \For{\(b \gets 1, len(\Rspvecs)\)}
+      \State \(\mat{P} \gets \Rhsvecs[a], \mat{Q} \gets \Rspvecs[b]\)
+      \State \(\lr{P}{Q}_{0} \gets -P_{ia}Q_{ia}\)
+      \State \(\Resp[a,b] \gets \lr{P}{Q}_{0}\)
+    \EndFor
+  \EndFor
+  \EndProcedure
+  \end{algorithmic}
+  \caption{Continuation of algorithm~\ref{alg:solve-linear-response}}
+  \label{alg:solve-linear-response-2}
+\end{algorithm}
+
+\begin{lstlisting}[%
+  frame=single,%
+  label=listing:input-almo-eda-gen1,%
+  caption=Sample \qchem{} input file for first-generation ALMO-EDA. Geometry is from HF/def2-SVPD.%
+]
+$rem
+  jobtype = eda
+  method = hf
+  basis = def2-svpd
+  scf_convergence = 11
+  thresh = 14
+  scf_max_cycles = 1000
+  symmetry = false
+  sym_ignore = true
+  cc_symmetry = false
+  scf_print_frgm = false
+  frgm_method = stoll
+  frgm_lpcorr = rs_exact_scf
+  eda_bsse = true
+$end
+
+$molecule
+1 1
+--
+0 1
+Ar     0.000000000000000    0.000000000000000   -0.857713330500000
+--
+1 1
+Li     0.000000000000000    0.000000000000000    1.571999044800000
+$end
+\end{lstlisting}

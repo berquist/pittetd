@@ -1,9 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{example}
 
+\RequirePackage{etoolbox}
+
 \RequirePackage{booktabs}
 \RequirePackage{braket}
-\RequirePackage{etoolbox}
 \RequirePackage{graphicx}
 
 \RequirePackage{algorithm}
@@ -11,6 +12,15 @@
 
 \BeforeBeginEnvironment{algorithmic}{\begin{singlespace}}
 \AfterEndEnvironment{algorithmic}{\end{singlespace}}
+
+\RequirePackage{listings}
+\lstset{%
+  basicstyle=\ttfamily\footnotesize,%
+  breakatwhitespace=true,%
+  breaklines=false,%
+  frame=none,%
+  numberbychapter=false,%
+}
 
 \RequirePackage[usenames,dvipsnames,svgnames,hyperref,table]{xcolor}
 

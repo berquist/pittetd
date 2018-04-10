@@ -367,8 +367,9 @@
             The preliminaries should be placed in the next order:
             \MessageBreak title, committee, [copyright],
             abstract, [preface/foreword], tableofcontents,
-            [listoftables], [listoffigures].\MessageBreak
-            \MessageBreak I think something is either missing or
+            [listoftables], [listoffigures], [listofalgos],
+            [listoflistings].\MessageBreak \MessageBreak
+            I think something is either missing or
             misplaced in your document. I will typeset things in
             the given order, but you should double-check.}}}
 \newcommand\@@disable[2]{%
@@ -603,6 +604,41 @@
     \@enable{preface}{the first chapter}%
     \@disable{lot}}
 \let\l@figure\l@table
+\newcommand\listoflistings{\clearpage
+  \typeout{List of Listings}%
+  \@ifundefined{@outlinefile}{}{%
+    \hypertarget{prelim.8}{}%
+    \protected@write\@outlinefile{}{%
+      \protect\BOOKMARK
+      [0][]{prelim.8}{LIST OF LISTINGS}{}%
+      \protect\begingroup\protect\makeatletter
+      \protect\prepare@bookmarks8
+      \protect\@input{\jobname.lol}
+      \protect\endgroup}}
+  \null\vskip 1in
+  {\normalfont\bfseries\centering
+    LIST OF LISTINGS\par}
+  \par\vspace{54\p@}%
+  \@starttoc{lol}\newpage
+  \@enable{preface}{the first chapter}}
+\newcommand\listofalgos{\clearpage
+  \typeout{List of Algorithms}%
+  \@ifundefined{@outlinefile}{}{%
+    \hypertarget{prelim.9}{}%
+    \protected@write\@outlinefile{}{%
+      \protect\BOOKMARK
+      [0][]{prelim.9}{LIST OF ALGORITHMS}{}%
+      \protect\begingroup\protect\makeatletter
+      \protect\prepare@bookmarks9
+      \protect\@input{\jobname.loa}
+      \protect\endgroup}}
+  \null\vskip 1in
+  {\normalfont\bfseries\centering
+    LIST OF ALGORITHMS\par}
+  \par\vspace{54\p@}%
+  \@starttoc{loa}\newpage
+  \@enable{preface}{the first chapter}}
+\let\l@algorithm\l@table
 \newcommand\preface{%
     \clearpage\@prefacemessage
     \@afterindentfalse
