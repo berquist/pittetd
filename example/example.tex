@@ -37,12 +37,12 @@
 %
 \usepackage{example}
 %
-\makeatletter
-\patchcmd{\listof}% <cmd>
-  {\float@listhead}% <search>
-  {\@namedef{l@#1}{\l@figure}\float@listhead}% <replace>
-  {}{}% <success><failure>
-  \makeatother
+% \makeatletter
+% \patchcmd{\listof}% <cmd>
+%   {\float@listhead}% <search>
+%   {\@namedef{l@#1}{\l@figure}\float@listhead}% <replace>
+%   {}{}% <success><failure>
+%   \makeatother
 %
 \input{./preamble}
 \begin{document}
