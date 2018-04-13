@@ -611,7 +611,8 @@
 %
 %This procedure is of course recommended only to users experienced with |hyperref|. A comprehensive list of |hyperref|'s options is given in \cite{options}. Here is the list of options that \pittetd uses by default (when allowed to):
 %
-%\noindent{\ttfamily hyperindex=true\\[-2pt]
+%\noindent{\ttfamily hyperindex=true,\\
+%pdfencoding=auto,\\
 %bookmarks, bookmarksnumbered, bookmarksopen}
 %
 %An option not used by \pittetd that might be relevant is |backref|, that makes the bibliographical entries produce links to the sections in which the corresponding |\cite| appear (there is also the alternative |pagebackref|, with links leading to the \emph{page} of the |\cite|'s).
@@ -1174,7 +1175,7 @@
 %    \begin{macrocode}
 \if@hyper@ref
     \AtEndOfClass{%
-        \usepackage[bookmarks,hyperindex=true]{hyperref}%
+        \usepackage[bookmarks,hyperindex=true,pdfencoding=auto]{hyperref}%
         \def\@pdfcreator{LaTeX, pittetd class, hyperref package}}
     \AtBeginDocument{%
         \hypersetup{%

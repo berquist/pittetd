@@ -299,7 +299,7 @@
     \newcommand\acro[1]{\textSMC{#1}\@}}{}
 \if@hyper@ref
     \AtEndOfClass{%
-        \usepackage[bookmarks,hyperindex=true]{hyperref}%
+        \usepackage[bookmarks,hyperindex=true,pdfencoding=auto]{hyperref}%
         \def\@pdfcreator{LaTeX, pittetd class, hyperref package}}
     \AtBeginDocument{%
         \hypersetup{%
