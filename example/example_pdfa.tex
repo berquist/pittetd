@@ -1,0 +1,41 @@
+\documentclass[draft]{pittetd}
+
+\newcommand{\thetitle}{Decomposition of Intermolecular Interactions in \textit{ab initio} Spectroscopy}
+\newcommand{\theauthor}{Eric John Berquist}
+
+\usepackage{filecontents}
+\begin{filecontents*}{\jobname.xmpdata}
+\Title{\thetitle}
+\Author{\theauthor}
+\Keywords{pittetd\sep class example\sep PDF/A}
+\Publisher{None}
+\end{filecontents*}
+
+\usepackage[usenames,dvipsnames,svgnames,hyperref,table]{xcolor}
+\definecolor{carmine}{HTML}{960018}
+
+\usepackage[a-1b]{pdfx}
+
+\hypersetup{%
+  unicode=true,%
+  colorlinks=true,%
+  citecolor=black,%
+  linkcolor=black,%
+  urlcolor=carmine,%
+}
+
+\input{./preamble}
+\begin{document}
+\maketitle
+\makecommittee
+\copyrightpage
+\input{./abstract}
+\tableofcontents
+\listoftables
+\listoffigures
+\listofalgos
+\listoflistings
+%
+\preface
+\input{./preface}
+\end{document}

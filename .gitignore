@@ -12,6 +12,10 @@ pittdiss.pit
 # pittetd.cls
 pitthesis.pit
 
+# XMP
+*.xmpdata
+*.xmpi
+
 # LaTeX
 
 ## Core latex/pdflatex auxiliary files:
