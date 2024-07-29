@@ -1,8 +1,7 @@
-all: clean dtx
+all: clean ins dtx
 
-# Provided for posterity, but this is largely not necessary anymore.
 ins: pittetd.ins
-	tex pittetd.ins
+	tex -interaction=nonstopmode pittetd.ins
 
 dtx: pittetd.dtx
 	latex pittetd.dtx
