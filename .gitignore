@@ -1,6 +1,8 @@
 # General
 
+.direnv/
 *.html
+result
 
 # *.ins products
 achicago.pit
@@ -20,6 +22,7 @@ pitthesis.pit
 *.log
 *.lot
 *.fls
+*.hd
 *.out
 *.toc
 *.fmt
