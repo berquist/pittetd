@@ -19,5 +19,6 @@ pkgs.stdenv.mkDerivation {
     cp pittetd.cls $out
     cp pittetd.pdf $out
     cp pitthesis.pit $out
+    cp example/example.pdf $out
   '';
 }

@@ -1,4 +1,5 @@
 all: clean ins dtx
+	cd example && $(MAKE) all
 
 ins: pittetd.ins
 	tex -interaction=nonstopmode pittetd.ins
@@ -25,3 +26,4 @@ clean:
 	rm -f *.pit
 	rm -f *.toc
 	@rm -rf .cache
+	cd example && $(MAKE) clean
