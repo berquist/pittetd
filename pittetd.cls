@@ -7,9 +7,9 @@
 %% pittetd.dtx  (with options: `class')
 %% The `pittetd' project: Electronic Theses and Dissertations
 %%                        at the University of Pittsburgh.
-%% 
+%%
 %% Copyright 2003-4 Federico Garcia and Pitt ETD Working Group
-%% 
+%%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{pittetd}[2018/04/13 v1.61803
     University of Pittsburgh ETD
