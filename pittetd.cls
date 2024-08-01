@@ -11,7 +11,7 @@
 %% Copyright 2003-4 Federico Garcia and Pitt ETD Working Group
 %% 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{pittetd}[2004/08/17 v1.618
+\ProvidesClass{pittetd}[2018/04/13 v1.61803
     University of Pittsburgh ETD
     (Electronic Thesis & Dissertations) class]
 \newwrite\@etdaux

@@ -2,8 +2,16 @@
 %
 % pittetd - University of Pittsburgh ETD (Electronic Theses and Dissertations) LaTeX class
 % Copyright 2003-4 Federico Garcia (feg8@pitt.edu)
+% Copyright 2018 Eric Berquist
 % -------------------------------------------
 %
+% Changelog:
+%
+% v1.61803:
+%   added list of listings (\listoflistings) and list of algorithms (\listofalgos)
+%   fixed broken references to preface
+%   use \setyear instead of \year
+%   enabled hyperindex option for hyperref
 %
 % This program can be redistributed and/or modified under the terms
 % of the LaTeX Project Public License distributed from CTAN archives
@@ -13,7 +21,7 @@
 %
 %<*driver>
 % \fi
-\ProvidesFile{pittetd.dtx}[2004/08/17 v1.618 Pitt ETD]
+\ProvidesFile{pittetd.dtx}[2018/04/13 v1.61803 Pitt ETD]
 % \iffalse
 \documentclass[11pt]{ltxdoc}
 \usepackage{array}
@@ -24,8 +32,11 @@
 \GetFileInfo{pittetd.dtx}
 \EnableCrossrefs
 \title{Electronic Theses and Dissertations\\ at Pitt\\ (a \LaTeXe\ class)}
-\date{2004/08/17}
-\author{Federico Garcia \thanks{University of Pittsburgh, Electronic Theses and Dissertations (ETD) Working Group.}}
+\date{\today}
+\author{Federico Garcia%
+  \thanks{University of Pittsburgh,
+    Electronic Theses and Dissertations (ETD) Working Group.
+    Additional contributions from Eric Berquist.}}
 \setcounter{IndexColumns}{2}
 \IndexPrologue{\section*{Index}\addcontentsline{toc}{section}{Index} Numbers written in italics refer to the page where the corresponding entry is described. A list of mentioned packages is found under `packages mentioned;' of environments under `environments;' of \pittetd options under `options to \pittetd.'}
 \CodelineIndex
@@ -662,7 +673,7 @@
 %    \begin{macrocode}
 %<*class>
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{pittetd}[2004/08/17 v1.618
+\ProvidesClass{pittetd}[2018/04/13 v1.61803
     University of Pittsburgh ETD
     (Electronic Thesis & Dissertations) class]
 %    \end{macrocode}

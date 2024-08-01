@@ -1,7 +1,8 @@
-all: ins dtx
+all: clean ins dtx
+	cd example && $(MAKE) all
 
 ins: pittetd.ins
-	tex pittetd.ins
+	tex -interaction=nonstopmode pittetd.ins
 
 dtx: pittetd.dtx
 	latex pittetd.dtx
@@ -16,6 +17,7 @@ clean:
 	rm -f *.dvi
 	rm -f *.fdb_latexmk
 	rm -f *.fls
+	rm -f *.hd
 	rm -f *.idx
 	rm -f *.ilg
 	rm -f *.ind
@@ -23,3 +25,5 @@ clean:
 	rm -f *.out
 	rm -f *.pit
 	rm -f *.toc
+	@rm -rf .cache
+	cd example && $(MAKE) clean
