@@ -1,0 +1,27 @@
+---
+name: build
+
+# yamllint disable-line rule:truthy
+on:
+  workflow_dispatch:
+  workflow_call:
+
+concurrency:
+  group: build-${{github.ref}}-${{github.event.pull_request.number || github.run_number}}
+  cancel-in-progress: true
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: xu-cheng/texlive-action@v2
+        with:
+          scheme: full
+          run: |
+            make
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: ./
+          overwrite: true
