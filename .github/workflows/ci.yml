@@ -11,10 +11,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  nix:
+    uses: ./.github/workflows/nix.yml
   build:
     uses: ./.github/workflows/build.yml
   all:
-    needs: [build]
+    needs: [nix, build]
     runs-on: ubuntu-latest
     steps:
       - name: Success

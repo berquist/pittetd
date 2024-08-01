@@ -1,6 +1,8 @@
 # General
 
+.direnv/
 *.html
+result
 
 # *.ins products
 achicago.pit
