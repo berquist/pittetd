@@ -22,5 +22,7 @@ jobs:
         with:
           name: berquist-dissertation
       - uses: actions/checkout@v4
-      - name: Build nix package
+      - name: Check nix package
         run: nix flake check -L
+      - name: Build nix package
+        run: nix build -L
